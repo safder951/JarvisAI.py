@@ -4,6 +4,12 @@ import speech_recognition as sr
 import wikipedia
 import webbrowser
 import os
+import wolframalpha
+
+
+# wolframalpha API  
+YOUR_API = ""
+client = wolframalpha.Client(YOUR_API)
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -67,6 +73,12 @@ if __name__ == "__main__":
 
 	elif 'open youtube' in query:
 		webbrowser.open("youtube.com")
+		
+	elif "temperature" in query:
+            print("searching in wolframalpha ")
+            speak("searching in wolframalpha ")
+            res = client.query(query)
+            print(next(res.results).text)
 
 	elif  'open google' in query:
 		webbrowser.open("google.com")
